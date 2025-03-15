@@ -7,8 +7,6 @@
 @endsection
 
 @section("container")
-@include("includes.flash-message")
-<div class="presentation"></div>
 <div class="content">
   <div class="login-content">
     <div class="title">Gerenciamento de Contatos</div>
@@ -29,7 +27,7 @@
         <div class="row mb-4">
           <div class="col d-flex">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="remember" id="remember" checked />
+              <input class="form-check-input" type="checkbox" name="remember" id="remember" value="1" />
               <label class="form-check-label" for="remember">Lembrar-me</label>
             </div>
           </div>
