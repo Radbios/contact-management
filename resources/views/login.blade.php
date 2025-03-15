@@ -7,20 +7,23 @@
 @endsection
 
 @section("container")
+@include("includes.flash-message")
 <div class="presentation"></div>
 <div class="content">
   <div class="login-content">
     <div class="title">Gerenciamento de Contatos</div>
     <div class="form-content">
-      <form>
+      <form action="{{route("authenticate")}}" method="POST">
+        @csrf
+        @method("POST")
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="email" id="form2Example1" class="form-control" />
-          <label class="form-label" for="form2Example1">Email address</label>
+          <input type="email" name="email" id="email" class="form-control" />
+          <label class="form-label" for="email">Email</label>
         </div>
       
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" id="form2Example2" class="form-control" />
-          <label class="form-label" for="form2Example2">Password</label>
+          <input type="password" name="password" id="password" class="form-control" />
+          <label class="form-label"  for="password">Password</label>
         </div>
       
         <div class="row mb-4">
@@ -36,7 +39,7 @@
           </div>
         </div>
       
-        <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Entrar</button>
+        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Entrar</button>
       
         <div class="text-center">
           <p>Não está cadastrado? <a href="#!">Registre-se</a></p>

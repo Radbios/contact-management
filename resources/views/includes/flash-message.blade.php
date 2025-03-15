@@ -1,0 +1,15 @@
+@if(session("success"))
+    <div>
+        {{Session::get("success")}}
+    </div>
+@endif
+
+@if($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
