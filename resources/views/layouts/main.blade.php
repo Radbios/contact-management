@@ -7,13 +7,18 @@
 
     <link rel="stylesheet" href="{{asset("assets/css/main.css")}}">
     <link rel="stylesheet" href="{{asset("mdb/css/mdb.min.css")}}">
-    
+
     @yield("css")
 
     <title>@yield("title") | {{config("app.name")}}</title>
 </head>
 
 <body>
+    @auth
+        @include("layouts.nav")
+    @endauth
+    
+    @include("includes.flash-message")
     @yield("container")
 </body>
 
