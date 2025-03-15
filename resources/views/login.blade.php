@@ -29,8 +29,8 @@
         <div class="row mb-4">
           <div class="col d-flex">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-              <label class="form-check-label" for="form2Example34">Lembrar-me</label>
+              <input class="form-check-input" type="checkbox" name="remember" id="remember" checked />
+              <label class="form-check-label" for="remember">Lembrar-me</label>
             </div>
           </div>
       
