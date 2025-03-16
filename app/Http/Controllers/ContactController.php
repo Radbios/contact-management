@@ -18,8 +18,25 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $contacts = Auth::user()->contacts()->withTrashed()->paginate(9);
-        return view("auth.home", compact("contacts"));
+        $contacts = Auth::user()->contacts();
+
+        $search ??= $request->search;
+        $status_filter ??= $request->status_filter;
+        if(!is_null($status_filter)) {
+            if($status_filter == 0) {
+                $contatcs = $contacts->onlyTrashed();
+            } else if($status_filter == -1) {
+                $contatcs = $contacts->withTrashed();
+            }
+        }
+
+        if($search) {
+            $contacts->where("name", "LIKE", "%" . $search . "%");
+        }
+
+        $contacts = $contacts->paginate(9);
+        $contacts->appends(['search' => $search, 'status_filter' => $status_filter]);
+        return view("auth.home", compact("contacts", "search", "status_filter"));
     }
 
     /**
@@ -73,7 +90,7 @@ class ContactController extends Controller
     {
         $contact = Contact::withTrashed()->findOrFail($contact);
         Gate::allowIf($contact->belongsToUser());
-        
+
         $contact->restore();
 
         return redirect()->back()->with("success", "Contato restaurado com sucesso!");

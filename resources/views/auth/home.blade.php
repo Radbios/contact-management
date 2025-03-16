@@ -71,6 +71,31 @@
                 </button>
             </div>
         </div>
+        <div class="container mb-3">
+            <form action="{{route("home")}}" method="GET">
+                <div class="input-group">
+                    <input type="search" id="search" class="form-control rounded" name="search" placeholder="Buscar pelo nome" value="{{$search}}" aria-label="Search" aria-describedby="search-addon" />
+                    <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Buscar</button>
+                </div>
+                <div class="input-group mt-3 flex justify-content-end">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status_filter" id="status-filter1" value="-1" @if ($status_filter == "-1") checked @endif>
+                        <label class="form-check-label" for="status-filter1">Todos</label>
+                      </div>
+                      
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status_filter" id="status-filter2" value="1" @if ($status_filter == "1") checked @endif/>
+                        <label class="form-check-label" for="status-filter2">Ativos</label>
+                      </div>
+                      
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status_filter" id="status-filter3" value="0" @if ($status_filter == "0") checked @endif/>
+                        <label class="form-check-label" for="status-filter3">Deletados</label>
+                      </div>
+                    <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Filtrar</button>
+                </div>
+            </form>
+        </div>
         <div class="row">
             @forelse ($contacts as $contact)
                 @include('auth.contacts.edit', ["contact" => $contact])
