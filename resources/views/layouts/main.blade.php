@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{{asset("assets/css/main.css")}}">
     <link rel="stylesheet" href="{{asset("mdb/css/mdb.min.css")}}">
+    <script src="https://unpkg.com/imask"></script>
 
     @yield("css")
 
