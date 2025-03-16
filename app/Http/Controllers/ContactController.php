@@ -22,17 +22,9 @@ class ContactController extends Controller
 
         $search ??= $request->search;
         $status_filter ??= $request->status_filter;
-        if(!is_null($status_filter)) {
-            if($status_filter == 0) {
-                $contatcs = $contacts->onlyTrashed();
-            } else if($status_filter == -1) {
-                $contatcs = $contacts->withTrashed();
-            }
-        }
 
-        if($search) {
-            $contacts->where("name", "LIKE", "%" . $search . "%");
-        }
+        $contacts->filter($status_filter);
+        $contacts->search($search);
 
         $contacts = $contacts->paginate(9);
         $contacts->appends(['search' => $search, 'status_filter' => $status_filter]);
@@ -103,7 +95,7 @@ class ContactController extends Controller
     public function export_csv(Request $request)
     {   
         $filename =  date("d_m_Y_h_i_s") . '_export_contacts';
-        
+        dd($request);
         return response()->stream(function(){
             $contacts = Auth::user()->contacts()->get(["name", "phone", "email", "created_at"])->toArray();
 
