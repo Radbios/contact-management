@@ -12,22 +12,22 @@
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <input type="text" id="edit_name{{$contact->id}}" name="name" class="form-control" value="{{$contact->name}}" required/>
-                        <label class="form-label" for="name">Nome</label>
+                        <label class="form-label" for="edit_name{{$contact->id}}">Nome</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <input type="text" id="edit_phone{{$contact->id}}" name="phone" class="form-control" value="{{$contact->phone}}" required/>
-                        <label class="form-label" for="phone">Telefone</label>
+                        <label class="form-label" for="edit_phone{{$contact->id}}">Telefone</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <input type="email" id="edit_email{{$contact->id}}" name="email" class="form-control" value="{{$contact->email}}"/>
-                        <label class="form-label" for="email">Email</label>
+                        <label class="form-label" for="edit_email{{$contact->id}}">Email</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <textarea class="form-control" name="notes" id="edit_notes{{$contact->id}}" rows="4">{{$contact->notes}}</textarea>
-                        <label class="form-label" for="notes">Descrição</label>
+                        <label class="form-label" for="edit_notes{{$contact->id}}">Descrição</label>
                     </div>
                 </div>
                 <div class="modal-footer">
