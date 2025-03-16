@@ -19,5 +19,6 @@ Route::middleware("auth")->group(function(){
 
     Route::get("/", [ContactController::class, "index"])->name("home");
     Route::post("contacts/{contact}/restore", [ContactController::class, "restore"])->name("contacts.restore");
-    Route::resource("contacts", ContactController::class)->names("contacts")->except("index");
+    Route::get("contacts/export", [ContactController::class, "export_csv"])->name("contacts.export");
+    Route::resource("contacts", ContactController::class)->names("contacts")->except(["index", "create", "edit"]);
 });

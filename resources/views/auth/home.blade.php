@@ -64,9 +64,12 @@
     <div class="container mt-4">
         <div class="header-content">
             <h4 class="mb-3">Lista de Contatos</h4>
-            <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#newContactModal">
-                Novo contato
-            </button>
+            <div class="actions">
+                <a href="{{route("contacts.export")}}" class="btn btn-primary">Exportar CSV</a>
+                <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#newContactModal">
+                    Novo contato
+                </button>
+            </div>
         </div>
         <div class="row">
             @forelse ($contacts as $contact)

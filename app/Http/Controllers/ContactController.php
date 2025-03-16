@@ -60,4 +60,24 @@ class ContactController extends Controller
 
         return redirect()->back()->with("success", "Contato restaurado com sucesso!");
     }
+
+    /**
+     * Exportar lista de contatos (em csv)
+     * @return Download
+     */
+    public function export_csv(Request $request)
+    {   
+        $filename =  date("d_m_Y_h_i_s") . '_export_contacts';
+        
+        return response()->stream(function(){
+            $contacts = Auth::user()->contacts()->get(["name", "phone", "email", "created_at"])->toArray();
+
+            foreach($contacts as $key => $contact){
+                echo $key+1 . ";" . implode(";", array_values($contact)) . "\n";
+            }
+        }, 200, [
+            "Content-Type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$filename",
+        ]);
+    }
 }
