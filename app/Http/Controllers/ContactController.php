@@ -95,9 +95,16 @@ class ContactController extends Controller
     public function export_csv(Request $request)
     {   
         $filename =  date("d_m_Y_h_i_s") . '_export_contacts';
-        dd($request);
-        return response()->stream(function(){
-            $contacts = Auth::user()->contacts()->get(["name", "phone", "email", "created_at"])->toArray();
+        return response()->stream(function() use($request){
+            $contacts = Auth::user()->contacts();
+
+            $search ??= $request->search;
+            $status_filter ??= $request->status_filter;
+
+            $contacts->filter($status_filter);
+            $contacts->search($search);
+
+            $contacts = $contacts->get(["name", "phone", "email", "created_at"])->toArray();
 
             foreach($contacts as $key => $contact){
                 echo $key+1 . ";" . implode(";", array_values($contact)) . "\n";
