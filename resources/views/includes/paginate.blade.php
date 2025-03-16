@@ -1,7 +1,7 @@
+<div class="text-muted">
+    Mostrando {{ $page->firstItem() }} - {{ $page->lastItem() }} de {{ $page->total() }} registros
+</div>
 <nav class="d-flex justify-content-center">
-    <div class="text-muted">
-        Mostrando {{ $page->firstItem() }} - {{ $page->lastItem() }} de {{ $page->total() }} registros
-    </div>
     <ul class="pagination pagination-circle mb-0">
         <li class="page-item {{ $page->currentPage() == 1 ? 'disabled' : '' }}">
             <a href="{{ $page->url(1) }}" class="page-link" aria-label="Primeira página">
