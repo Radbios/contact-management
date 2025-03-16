@@ -52,6 +52,7 @@
                 @if (!$contact->trashed())
                     @include('auth.contacts.edit', ["contact" => $contact])
                     @include('auth.contacts.details', ["contact" => $contact])
+                    @include('auth.contacts.delete', ["contact" => $contact])
                 @endif
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card contact-card {{!$contact->trashed() ? 'success' : 'danger'}}">
@@ -85,11 +86,9 @@
                                 <button type="button" class="btn btn-warning w-100 w-md-auto" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editContact{{$contact->id}}Modal">
                                     Editar
                                 </button>
-                                <form action="{{ route('contacts.destroy', [$contact->id]) }}" method="POST" class="w-100 w-md-auto">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger w-100 w-md-auto" data-mdb-ripple-init>Deletar</button>
-                                </form>
+                                <button type="button" class="btn btn-danger w-100 w-md-auto" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#deleteContact{{$contact->id}}Modal">
+                                    Deletar
+                                </button>
                             @endif
                         </div>
                     </div>
