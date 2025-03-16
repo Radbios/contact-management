@@ -22,7 +22,7 @@ class UserController extends Controller
         if ($user) {
             Auth::login($user);
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended(route("home"));
         }
 
         return redirect()->back()->withErrors(["Ocorreu um erro inesperado"]);
