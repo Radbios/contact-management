@@ -74,6 +74,7 @@
         <div class="row">
             @forelse ($contacts as $contact)
                 @include('auth.contacts.edit', ["contact" => $contact])
+                @include('auth.contacts.details', ["contact" => $contact])
                 <div class="col-md-4 mb-4">
                     <div class="card contact-card {{!$contact->trashed() ? "success" : "danger"}}">
                         <div class="card-header">
@@ -95,7 +96,9 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Detalhes</button>
+                            <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#viewContact{{$contact->id}}Modal">
+                                Detalhes
+                            </button>
                             <button type="button" class="btn btn-warning" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editContact{{$contact->id}}Modal">
                                 Editar
                             </button>
