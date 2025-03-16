@@ -7,6 +7,7 @@ use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ContactController extends Controller
 {
@@ -44,6 +45,7 @@ class ContactController extends Controller
      */
     public function update(ContactRequest $request, Contact $contact)
     {
+        Gate::allowIf($contact->belongsToUser());
         $contact->update($request->validated());
 
         return redirect()->back()->with("success", "Contato atualizado com sucesso");
@@ -56,6 +58,7 @@ class ContactController extends Controller
      */
     public function destroy(Request $request, Contact $contact): RedirectResponse
     {
+        Gate::allowIf($contact->belongsToUser());
         $contact->delete();
 
         return redirect()->back()->with("success", "Contato deletado com sucesso!");
@@ -69,6 +72,8 @@ class ContactController extends Controller
     public function restore(Request $request, $contact)
     {
         $contact = Contact::withTrashed()->findOrFail($contact);
+        Gate::allowIf($contact->belongsToUser());
+        
         $contact->restore();
 
         return redirect()->back()->with("success", "Contato restaurado com sucesso!");
