@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     {
         return [
             "name" => ["required", "max:55"],
-            "email" => ["required", "email"],
+            "email" => ["required", "email", "max:55"],
             "password" => ["required", "confirmed", "min:8"]
         ];
     }
@@ -36,6 +36,7 @@ class UserRequest extends FormRequest
             "name.max" => "O nome não pode ultrapassar 55 caracteres",
             "email.required" => "O email é obrigatório",
             "email.email" => "O email tem que ser válido",
+            "email.max" => "O email não pode ter mais de 55 caracteres",
             "password.required" => "A senha é obrigatória",
             "password.confirmed" => "As senhas não conferem",
             "password.min" => "A senha deve ter pelo menos 8 caracteres",
