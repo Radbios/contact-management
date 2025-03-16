@@ -10,4 +10,12 @@ class Contact extends Model
 {
     /** @use HasFactory<\Database\Factories\ContactFactory> */
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        "user_id",
+        "name",
+        "email",
+        "phone",
+        "notes"
+    ];
 }
