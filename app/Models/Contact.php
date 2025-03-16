@@ -30,14 +30,14 @@ class Contact extends Model
         return $this->user_id === Auth::user()->id;
     }
 
-    public function scopeSearch(Builder $query, string $search)
+    public function scopeSearch(Builder $query, string|null $search)
     {
         if(!is_null($search)) {
             $query->where("name", "LIKE", "%" . $search . "%");
         }
     }
 
-    public function scopeFilter(Builder $query, string $filter)
+    public function scopeFilter(Builder $query, string|null $filter)
     {
         if(!is_null($filter)) {
             if($filter == 0) {
