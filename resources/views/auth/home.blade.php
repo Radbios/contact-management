@@ -98,8 +98,10 @@
         </div>
         <div class="row">
             @forelse ($contacts as $contact)
-                @include('auth.contacts.edit', ["contact" => $contact])
-                @include('auth.contacts.details', ["contact" => $contact])
+                @if (!$contact->trashed())
+                    @include('auth.contacts.edit', ["contact" => $contact])
+                    @include('auth.contacts.details', ["contact" => $contact])
+                @endif
                 <div class="col-md-4 mb-4">
                     <div class="card contact-card {{!$contact->trashed() ? "success" : "danger"}}">
                         <div class="card-header">
@@ -113,20 +115,16 @@
                                 <strong>Telefone:</strong> {{ $contact->phone }} <br>
                                 <strong>Email:</strong> {{ $contact->email ?? "Não Registrado" }} <br>
                             </p>
-                            <p class="card-text info-card text-end">
-                                <strong>Criado em:</strong> {{ $contact->created_at->format('d/m/Y') }} <br>
+                            <p class="card-text info-card d-flex justify-content-end">
                                 @if ($contact->trashed())
-                                    <strong>Deletado em:</strong> {{$contact->deleted_at->format('d/m/Y')}} <br>
+                                    <span><strong>Deletado em:</strong> {{$contact->deleted_at->format('d/m/Y')}}</span>
+                                @else
+                                    <span><strong>Criado em:</strong> {{ $contact->created_at->format('d/m/Y') }}</span>
                                 @endif
                             </p>
+                            
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#viewContact{{$contact->id}}Modal">
-                                Detalhes
-                            </button>
-                            <button type="button" class="btn btn-warning" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editContact{{$contact->id}}Modal">
-                                Editar
-                            </button>
                             @if ($contact->trashed())
                                 <form action="{{route("contacts.restore", [$contact->id])}}" method="POST">
                                     @csrf
@@ -134,6 +132,12 @@
                                     <button type="submit" class="btn btn-secondary" data-mdb-ripple-init>Restaurar</button>
                                 </form>
                             @else
+                                <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#viewContact{{$contact->id}}Modal">
+                                    Detalhes
+                                </button>
+                                <button type="button" class="btn btn-warning" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editContact{{$contact->id}}Modal">
+                                    Editar
+                                </button>
                                 <form action="{{route("contacts.destroy", [$contact->id])}}" method="POST">
                                     @csrf
                                     @method("DELETE")
