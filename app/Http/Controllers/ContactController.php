@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,6 +19,21 @@ class ContactController extends Controller
     {
         $contacts = Auth::user()->contacts()->withTrashed()->paginate(9);
         return view("auth.home", compact("contacts"));
+    }
+
+    /**
+     * Registrar contato
+     * @param \App\Http\Requests\ContactRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ContactRequest $request)
+    {
+        $data = $request->validated();
+        $data["user_id"] = Auth::user()->id;
+
+        $contact = Contact::create($data);
+
+        return redirect()->back()->with("success", "Contato registrado com sucesso");
     }
 
     /**

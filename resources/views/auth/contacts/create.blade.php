@@ -11,22 +11,22 @@
                     @method('POST')
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text" id="name" class="form-control" />
+                        <input type="text" id="name" name="name" class="form-control" value="{{old("name")}}" required/>
                         <label class="form-label" for="name">Nome</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text" id="phone" class="form-control" />
+                        <input type="text" id="phone" name="phone" class="form-control" value="{{old("phone")}}" required/>
                         <label class="form-label" for="phone">Telefone</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="email" class="form-control" />
+                        <input type="email" id="email" name="email" class="form-control" value="{{old("email")}}"/>
                         <label class="form-label" for="email">Email</label>
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <textarea class="form-control" id="notes" rows="4"></textarea>
+                        <textarea class="form-control" name="notes" id="notes" rows="4">{{old("notes")}}</textarea>
                         <label class="form-label" for="notes">Descrição</label>
                     </div>
                 </div>
@@ -38,3 +38,15 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    var phoneMask = IMask(document.getElementById("phone"), {
+        mask: "(00) 00000-0000"
+    });
+
+    var emailMask = IMask(document.getElementById("email"), {
+        mask: /^\S*@?\S*$/,
+        maxLength: 55
+    });
+</script>
