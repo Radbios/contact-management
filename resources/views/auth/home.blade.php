@@ -73,6 +73,7 @@
         </div>
         <div class="row">
             @forelse ($contacts as $contact)
+                @include('auth.contacts.edit', ["contact" => $contact])
                 <div class="col-md-4 mb-4">
                     <div class="card contact-card {{!$contact->trashed() ? "success" : "danger"}}">
                         <div class="card-header">
@@ -95,7 +96,9 @@
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-primary" data-mdb-ripple-init>Detalhes</button>
-                            <button type="button" class="btn btn-warning" data-mdb-ripple-init>Editar</button>
+                            <button type="button" class="btn btn-warning" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editContact{{$contact->id}}Modal">
+                                Editar
+                            </button>
                             @if ($contact->trashed())
                                 <form action="{{route("contacts.restore", [$contact->id])}}" method="POST">
                                     @csrf

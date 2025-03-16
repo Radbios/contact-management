@@ -37,6 +37,19 @@ class ContactController extends Controller
     }
 
     /**
+     * Atualizar contato
+     * @param \App\Http\Requests\ContactRequest $request
+     * @param Contact|Model|string $contact
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(ContactRequest $request, Contact $contact)
+    {
+        $contact->update($request->validated());
+
+        return redirect()->back()->with("success", "Contato atualizado com sucesso");
+    }
+
+    /**
      * Deletar contato (Logicamente)
      * @param Contact|Model|string $contact
      * @return \Illuminate\Http\RedirectResponse
