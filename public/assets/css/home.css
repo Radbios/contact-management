@@ -1,0 +1,52 @@
+.content{
+    padding: 1rem 3rem
+}
+.info-card{
+    font-size: 12px
+}
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.status-circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+}
+
+.status-circle.success{
+    background-color: green !important
+}
+
+.status-circle.danger{
+    background-color: red !important
+}
+
+.contact-card.success{
+    border-left: 10px solid green
+}
+
+.contact-card.danger{
+    border-left: 10px solid red
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.card-footer .btn, .card-footer form, .card-footer form.btn{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex: 1
+}
+
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px
+}
