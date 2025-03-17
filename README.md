@@ -109,4 +109,4 @@ Descrição: Permite a exportação da lista de contatos em um arquivo CSV para 
 - **[CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)**
 - **[JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)**
 - **[Blade](https://laravel.com/docs/9.x/blade)**
-- **[MDBOOTSTRAP](https://mdbootstrap.com/)**
+- **[MDBootstrap](https://mdbootstrap.com/)**
