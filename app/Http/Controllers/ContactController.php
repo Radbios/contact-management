@@ -104,7 +104,7 @@ class ContactController extends Controller
             $contacts->filter($status_filter);
             $contacts->search($search);
 
-            $contacts = $contacts->get(["name", "phone", "email", "created_at"])->toArray();
+            $contacts = $contacts->get(["name", "phone", "email", "created_at", "deleted_at"])->toArray();
 
             foreach($contacts as $key => $contact){
                 echo $key+1 . ";" . implode(";", array_values($contact)) . "\n";
