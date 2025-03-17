@@ -35,7 +35,7 @@ class ContactRequest extends FormRequest
             "name.required" => "O nome é obrigatório",
             "name.max" => "O nome deve ter no máximo 55 caracteres",
             "phone.required" => "O telefone é obrigatório",
-            "phone.regex" => "O telefone está no formato incorreto",
+            "phone.regex" => "O telefone está no formato incorreto. Formato aceito: (XX) 9XXXX-XXXX",
             "email.email" => "O email tem que ser válido",
             "email.max" => "O email tem que ter no máximo 55 caracteres",
             "notes.max" => "A descrição não pode ultrapassar 512 caracteres",
