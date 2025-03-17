@@ -94,7 +94,11 @@
                     </div>
                 </div>
             @empty
-                Não há registros
+                <div class="alert alert-secondary text-center d-flex justify-content-center align-items-center">
+                    <span>
+                        <strong>Não há registros para exibir</strong>
+                    </span>
+                </div>
             @endforelse
         </div>
         @include('includes.paginate', ["page" => $contacts])
