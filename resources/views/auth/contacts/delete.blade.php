@@ -10,7 +10,6 @@
                 </div>
                 <div class="modal-body">
                     <p>Tem certeza de que deseja excluir o contato <strong>{{$contact->name}}</strong>?</p>
-                    <p>Esta ação não pode ser desfeita.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Voltar</button>
