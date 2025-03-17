@@ -33,7 +33,7 @@
           </div>
       
           <div class="col">
-            <a href="#!">Esqueci a senha</a>
+            <a href="{{route("forgot_password")}}">Esqueci a senha</a>
           </div>
         </div>
       

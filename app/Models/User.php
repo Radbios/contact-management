@@ -3,10 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Mail\ResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -51,5 +55,23 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contact::class, "user_id")
                     ->orderBy("deleted_at");
+    }
+
+    public function resetPasswordNotification()
+    {
+        $instance = PasswordResetToken::find($this->email);
+        $expire = config('auth.passwords.users.reset');
+        $date = date('Y-m-d H:i:s', strtotime(now()) + ($expire * 60));
+        if($instance) {
+            $instance->update(["expires_at" => $date]);
+        } else {
+            $instance = PasswordResetToken::create([
+                "email" => $this->email,
+                "token" => Str::random(60),
+                "expires_at" => $date
+            ]);
+        }
+
+        Mail::to($this->email)->send(new ResetPassword($this, $instance->token));
     }
 }
