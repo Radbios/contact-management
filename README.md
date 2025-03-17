@@ -12,7 +12,7 @@ Vá para a pasta do projeto, faça uma cópia do arquivo `.env.example`, renomei
 
 Você pode usar o seguinte comando para fazer uma cópia do arquivo `.env.example`:
 ```
-cd perfil-seduc
+cd contact-management
 cp .env.example .env
 ```
 Em seguida, abra o arquivo `.env` com um editor de texto e faça as configurações necessárias, como definir variáveis de ambiente, configurar credenciais de banco de dados, etc.
