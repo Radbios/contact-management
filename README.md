@@ -1,66 +1,112 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## 📖 Como usar
+Siga estas etapas para começar a usar o projeto:
+#### 1. Clone o Projeto
+Para obter uma cópia do projeto em seu computador, execute o comando abaixo para clonar o repositório usando o Git:
+```
+git clone https://github.com/SEDUC-TI/perfil-seduc.git
+```
+> **Observação:** Caso não tenha o **[Git](https://git-scm.com/)**, instale-o.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### 2. **Configure o arquivo `.env`**
+Vá para a pasta do projeto, faça uma cópia do arquivo `.env.example`, renomeie o arquivo para `.env` e faça as devidas modificações para configurar o servidor.
 
-## About Laravel
+Você pode usar o seguinte comando para fazer uma cópia do arquivo `.env.example`:
+```
+cd perfil-seduc
+cp .env.example .env
+```
+Em seguida, abra o arquivo `.env` com um editor de texto e faça as configurações necessárias, como definir variáveis de ambiente, configurar credenciais de banco de dados, etc.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### 4. Instale as Dependências
+Instale as dependências do projeto com o composer
+```
+composer install
+```
+> **Observação:** Caso não tenha o **[Composer](https://getcomposer.org/)**, instale-o.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### 4. Crie a chave
+Crie a chave no `.env` com o seguinte comando:
+```
+php artisan key:generate
+```
+> **Observação:** Caso não tenha o **[Composer](https://getcomposer.org/)**, instale-o.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+#### 5. Rode as Migrations
+Rode as migrations do projeto com as seeders (não é obrigado executar a seeder, caso não queira)
+```
+php artisan migrate --seed
+```
+#### 6. Inicie o Servidor
+Inicio o servidor laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Desenvolvimento
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```
+php artisan serve
+```
+> **Observação:** Por padrão, o servidor é executado na URL **[localhost](http://127.0.0.1:8000)**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Produção
+Seguir as instruções do servidor usado para o sistema.
+> **Observação:** É recomendado o uso do **[apache](https://httpd.apache.org/)** ou **[nginx](https://nginx.org/en/)**.
 
-## Laravel Sponsors
+## 💻 Usuário do Sistema  
+O sistema possui apenas um tipo de usuário (Padrão)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Funcionalidades do Sistema  
 
-### Premium Partners
+### 1. Sistema de Autenticação  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### 1.1 Login  
+**Alvo:** Padrão  
+Descrição: Permite que o usuário acesse sua conta no sistema.  
 
-## Contributing
+#### 1.2 Cadastro  
+**Alvo:** Padrão  
+Descrição: Permite que novos usuários se registrem no sistema.  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### 1.3 Recuperação de Senha  
+**Alvo:** Padrão  
+Descrição: Permite a redefinição de senha em caso de esquecimento.  
 
-## Code of Conduct
+### 2. Gerenciamento de Contatos  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### 2.1 Listar Contatos  
+**Alvo:** Padrão  
+Descrição: Exibe a lista de contatos cadastrados pelo usuário.  
 
-## Security Vulnerabilities
+#### 2.2 Criar Contato  
+**Alvo:** Padrão  
+Descrição: Permite o cadastro de novos contatos.  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 2.3 Editar Contato  
+**Alvo:** Padrão  
+Descrição: Permite a edição dos dados de um contato existente.  
 
-## License
+#### 2.4 Deletar Contato  
+**Alvo:** Padrão  
+Descrição: Permite a exclusão lógica de um contato.  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 2.5 Restaurar Contato  
+**Alvo:** Padrão  
+Descrição: Permite a recuperação de um contato previamente excluído.  
+
+#### 2.6 Exportar Contatos em CSV  
+**Alvo:** Padrão  
+Descrição: Permite a exportação da lista de contatos em um arquivo CSV para backup ou uso externo.  
+
+
+## :computer: Tecnologias Utilizadas
+
+### Back-end
+- **[Laravel](https://laravel.com/)**
+- **[PHP](https://www.php.net/)**
+- **[MySQL](https://www.mysql.com/)**
+  
+### Front-end
+- **[HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)**
+- **[CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)**
+- **[JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)**
+- **[Blade](https://laravel.com/docs/9.x/blade)**
+- **[MDBOOTSTRAP](https://mdbootstrap.com/)**
