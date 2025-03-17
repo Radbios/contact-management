@@ -3,6 +3,7 @@ Siga estas etapas para começar a usar o projeto:
 #### 1. Clone o Projeto
 Para obter uma cópia do projeto em seu computador, execute o comando abaixo para clonar o repositório usando o Git:
 ```
+git clone https://github.com/Radbios/contact-management.git
 ```
 > **Observação:** Caso não tenha o **[Git](https://git-scm.com/)**, instale-o.
 
