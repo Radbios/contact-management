@@ -39,6 +39,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: 800px) {
+    .content{
+      justify-content: center;
+      padding-left: 0px;
+    }
 
+    .login-content .title {
+      font-size: 30px;
+      letter-spacing: 1.5px;
+    }
   }
