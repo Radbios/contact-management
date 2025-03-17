@@ -24,6 +24,6 @@ class PasswordResetToken extends Model
      */
     public function user(): User|null
     {
-        return User::where("email", $this->email);
+        return User::where("email", $this->email)->first();
     }
 }
